@@ -4,8 +4,10 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, WhatsappLogo, FacebookLogo } from "@phosphor-icons/react";
+import { waLink, waMessages } from "@/lib/whatsapp";
 
-const WA = "https://wa.me/22900000000?text=Bonjour%2C%20je%20souhaite%20un%20diagnostic%20gratuit%20EazySell";
+const WA_DIAGNOSTIC = waLink(waMessages.diagnostic);
+const WA_CONTACT = waLink(waMessages.contact);
 const PORTFOLIO = "https://aboudouzinsou.com";
 
 const cols = [
@@ -31,7 +33,7 @@ const cols = [
   {
     title: "Contact",
     links: [
-      { label: "WhatsApp", href: WA },
+      { label: "WhatsApp", href: WA_CONTACT },
       { label: "Facebook", href: "https://facebook.com" },
       { label: "aboudouzinsou.com", href: PORTFOLIO },
     ],
@@ -77,7 +79,7 @@ export default function Footer() {
             Diagnostic gratuit, sans engagement. On vous dit exactement ce qui manque — et ce que ça coûte de le corriger.
           </p>
           <a
-            href={WA}
+            href={WA_DIAGNOSTIC}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-white text-black font-semibold px-7 py-4 rounded-md hover:bg-white/90 transition-colors duration-200"
@@ -95,7 +97,7 @@ export default function Footer() {
               EazySell équipe les entreprises béninoises avec l&apos;intelligence artificielle. Cotonou, Bénin.
             </p>
             <div className="flex items-center gap-3">
-              <a href={WA} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/10 transition-colors duration-200" style={{ borderColor: "rgba(255,255,255,0.18)" }}>
+              <a href={WA_CONTACT} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/10 transition-colors duration-200" style={{ borderColor: "rgba(255,255,255,0.18)" }}>
                 <WhatsappLogo size={16} weight="fill" />
               </a>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/10 transition-colors duration-200" style={{ borderColor: "rgba(255,255,255,0.18)" }}>

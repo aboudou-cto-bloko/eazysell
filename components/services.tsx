@@ -6,8 +6,8 @@ import Image from "next/image";
 import { images } from "@/lib/images";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { useIsMobile } from "@/hooks/use-is-mobile";
+import { waLink, waMessages } from "@/lib/whatsapp";
 
-const WA = "https://wa.me/22900000000?text=Bonjour%2C%20je%20souhaite%20un%20RDV%20EazySell";
 const ACCENT = "#2f6bff";
 
 // Image révélée à travers le texte masqué (background-clip: text).
@@ -176,7 +176,7 @@ export default function Services() {
                             <div className="flex items-center gap-4">
                               <span className="text-sm font-semibold">{s.price}</span>
                               <a
-                                href={WA}
+                                href={waLink(waMessages.service(s.name, s.price))}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 text-sm font-semibold bg-black text-white px-4 py-2 rounded-md hover:bg-zinc-800 transition-colors duration-200"

@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { waLink, waMessages } from "@/lib/whatsapp";
 
-const WA_LINK = "https://wa.me/22900000000?text=Bonjour%2C%20je%20souhaite%20un%20RDV%20EazySell";
+const WA_LINK = waLink(waMessages.rdv);
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
