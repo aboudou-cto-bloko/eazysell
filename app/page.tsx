@@ -29,6 +29,13 @@ const jsonLd = {
     "@type": "Person",
     name: "François Mawutô Aboudou Zinsou",
     url: "https://aboudouzinsou.com",
+    sameAs: [
+      "https://aboudouzinsou.com",
+      "https://github.com/aboudou-cto-bloko",
+      "https://www.linkedin.com/in/fran%C3%A7oisab8099316/",
+      "https://x.com/aboudouzinsou",
+      "https://www.facebook.com/francois.SaasXpert",
+    ],
   },
   sameAs: ["https://aboudouzinsou.com"],
   priceRange: "75 000 XOF – 4 000 000 XOF",
