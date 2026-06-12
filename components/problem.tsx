@@ -33,7 +33,7 @@ export default function Problem() {
 
   return (
     <section
-      className="sticky top-0 h-screen w-full overflow-hidden text-white"
+      className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen w-full overflow-hidden text-white"
       style={{ zIndex: 2, background: "#000000" }}
     >
       {/* Image fond — globe + pin GPS */}
@@ -49,7 +49,7 @@ export default function Problem() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
       </div>
 
-      <div ref={ref} className="relative z-10 h-full max-w-6xl mx-auto px-6 flex flex-col justify-center">
+      <div ref={ref} className="relative z-10 min-h-screen lg:h-full max-w-6xl mx-auto px-6 py-28 lg:py-0 flex flex-col justify-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

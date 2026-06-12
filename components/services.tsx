@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { images } from "@/lib/images";
 import { ArrowUpRight } from "@phosphor-icons/react";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 
 const WA = "https://wa.me/22900000000?text=Bonjour%2C%20je%20souhaite%20un%20RDV%20EazySell";
 const ACCENT = "#2f6bff";
@@ -76,14 +77,16 @@ const services = [
 export default function Services() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const isMobile = useIsMobile();
 
-  // Scroll épinglé : la progression dans le wrapper haut pilote l'item actif
+  // Scroll épinglé (desktop only) : la progression du wrapper pilote l'item actif
   const { scrollYProgress } = useScroll({
     target: wrapRef,
     offset: ["start start", "end end"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
+    if (isMobile) return; // sur mobile : accordéon au tap, pas de scroll-jacking
     const idx = Math.max(0, Math.min(services.length - 1, Math.floor(p * services.length)));
     setActive(idx);
   });
@@ -93,17 +96,17 @@ export default function Services() {
       ref={wrapRef}
       id="services"
       className="relative"
-      style={{ height: `${services.length * 100}vh`, zIndex: 3 }}
+      style={isMobile ? { zIndex: 3 } : { height: `${services.length * 100}vh`, zIndex: 3 }}
     >
-      {/* Contenu épinglé */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-white">
+      {/* Contenu épinglé sur desktop, flux normal sur mobile */}
+      <div className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen w-full overflow-hidden bg-white">
         {/* Image de fond + overlay très léger (à la limite du perceptible) */}
         <div className="absolute inset-0">
           <Image src={MASK_IMG} alt="" fill priority className="object-cover" sizes="100vw" />
           <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.82)" }} />
         </div>
 
-        <div className="relative z-10 h-full max-w-6xl mx-auto px-6 flex flex-col justify-center">
+        <div className="relative z-10 min-h-screen lg:h-full max-w-6xl mx-auto px-6 py-28 lg:py-0 flex flex-col justify-center">
           {/* Grand titre — masqué (image visible à travers les lettres) */}
           <h2
             className="font-bold uppercase leading-[0.9] mb-8 md:mb-10"

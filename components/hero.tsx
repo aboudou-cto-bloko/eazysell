@@ -16,7 +16,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="sticky top-0 h-screen w-full overflow-hidden bg-white" style={{ zIndex: 1 }}>
+    <section className="relative lg:sticky lg:top-0 h-screen w-full overflow-hidden bg-white" style={{ zIndex: 1 }}>
       {/* Conteneur arrondi avec marges (marge haute qui dégage la nav) */}
       <div className="h-full w-full px-3 pb-3 pt-[76px] md:px-4 md:pb-4 md:pt-[84px]">
         <div className="relative h-full w-full rounded-[28px] overflow-hidden bg-black">

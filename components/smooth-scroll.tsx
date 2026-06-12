@@ -7,7 +7,13 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
+    const lenis = new Lenis({
+      lerp: 0.075, // inertie plus douce
+      smoothWheel: true,
+      syncTouch: true, // scroll lissé aussi sur mobile
+      wheelMultiplier: 0.8, // molette ralentie intentionnellement
+      touchMultiplier: 1.1,
+    });
     lenisRef.current = lenis;
 
     function raf(time: number) {

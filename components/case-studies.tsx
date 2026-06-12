@@ -95,10 +95,10 @@ export default function CaseStudies() {
   return (
     <section
       id="cas-clients"
-      className="sticky top-0 h-screen w-full overflow-hidden text-white"
+      className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen w-full overflow-hidden text-white"
       style={{ zIndex: 4, background: "#0a0a0a" }}
     >
-      <div ref={ref} className="h-full max-w-6xl mx-auto px-6 flex flex-col justify-center py-20">
+      <div ref={ref} className="min-h-screen lg:h-full max-w-6xl mx-auto px-6 flex flex-col justify-center py-24 lg:py-20">
         {/* En-tête — reprend les 3 piliers du hero */}
         <div className="flex items-end justify-between gap-6 mb-12">
           <motion.h2
@@ -138,7 +138,7 @@ export default function CaseStudies() {
         {/* Grille principale */}
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.1fr_0.85fr] gap-5 items-stretch">
           {/* Image featured */}
-          <div className="relative rounded-2xl overflow-hidden bg-zinc-900 h-40 lg:h-[320px]">
+          <div className="relative rounded-2xl overflow-hidden bg-zinc-900 h-44 lg:h-[320px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -168,7 +168,7 @@ export default function CaseStudies() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-2xl p-7 md:p-8 flex flex-col justify-between h-40 lg:h-[320px] group overflow-hidden"
+              className="relative rounded-2xl p-7 md:p-8 flex flex-col justify-between min-h-[220px] lg:h-[320px] group overflow-hidden"
               style={{ background: `linear-gradient(140deg, ${ACCENT} 0%, #1b3fae 100%)` }}
             >
               <div className="flex items-start justify-between">
@@ -190,7 +190,7 @@ export default function CaseStudies() {
           </AnimatePresence>
 
           {/* Cards secondaires (cliquables) */}
-          <div className="flex flex-col gap-5 h-40 lg:h-[320px]">
+          <div className="flex flex-col gap-4 lg:gap-5 lg:h-[320px]">
             {others.map((c) => {
               const Ico = c.Icon;
               return (

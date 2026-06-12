@@ -4,6 +4,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { images } from "@/lib/images";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 
 const ACCENT = "#2f6bff";
 
@@ -31,6 +32,7 @@ const steps = [
 export default function Process() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: wrapRef,
@@ -38,6 +40,7 @@ export default function Process() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
+    if (isMobile) return; // mobile : tous les steps visibles, pas de scroll-jacking
     const idx = Math.max(0, Math.min(steps.length - 1, Math.floor(p * steps.length)));
     setActive(idx);
   });
@@ -47,10 +50,10 @@ export default function Process() {
       ref={wrapRef}
       id="process"
       className="relative"
-      style={{ height: `${steps.length * 100}vh`, zIndex: 5 }}
+      style={isMobile ? { zIndex: 5 } : { height: `${steps.length * 100}vh`, zIndex: 5 }}
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black text-white">
-        <div className="h-full max-w-6xl mx-auto px-6 flex items-center py-20">
+      <div className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen w-full overflow-hidden bg-black text-white">
+        <div className="min-h-screen lg:h-full max-w-6xl mx-auto px-6 flex items-start lg:items-center py-28 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-[0.82fr_1.1fr] gap-5 w-full items-stretch">
             {/* Card image + titre */}
             <div className="relative rounded-2xl overflow-hidden h-48 lg:h-[460px]">
@@ -81,7 +84,7 @@ export default function Process() {
                   <motion.div
                     key={i}
                     onClick={() => setActive(i)}
-                    animate={{ opacity: isActive ? 1 : 0.4 }}
+                    animate={{ opacity: isMobile || isActive ? 1 : 0.4 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="relative rounded-2xl border p-6 md:p-7 cursor-pointer flex-1"
                     style={{
