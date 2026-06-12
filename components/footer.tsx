@@ -34,6 +34,7 @@ const cols = [
     title: "Contact",
     links: [
       { label: "WhatsApp", href: WA_CONTACT },
+      { label: "eazysell.bj@gmail.com", href: "mailto:eazysell.bj@gmail.com" },
       { label: "Facebook", href: "https://facebook.com" },
       { label: "aboudouzinsou.com", href: PORTFOLIO },
     ],

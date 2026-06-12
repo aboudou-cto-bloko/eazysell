@@ -5,6 +5,7 @@ import Services from "@/components/services";
 import CaseStudies from "@/components/case-studies";
 import Process from "@/components/process";
 import Footer from "@/components/footer";
+import WhatsappFab from "@/components/whatsapp-fab";
 
 const SITE_URL = "https://eazysell-bj.online";
 
@@ -38,6 +39,16 @@ const jsonLd = {
     ],
   },
   sameAs: ["https://aboudouzinsou.com"],
+  email: "eazysell.bj@gmail.com",
+  telephone: "+2290167266360",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: "+2290167266360",
+    email: "eazysell.bj@gmail.com",
+    areaServed: "BJ",
+    availableLanguage: "fr",
+  },
   priceRange: "75 000 XOF – 4 000 000 XOF",
   knowsLanguage: "fr",
   hasOfferCatalog: {
@@ -69,6 +80,7 @@ export default function Home() {
         <Process />
       </main>
       <Footer />
+      <WhatsappFab />
     </>
   );
 }

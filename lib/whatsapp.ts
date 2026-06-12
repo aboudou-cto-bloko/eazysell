@@ -2,9 +2,11 @@
  * Liens WhatsApp avec messages pré-rédigés selon le contexte
  * (section, service, sous-titre, zone géographique).
  *
- * ⚠️ Remplace WA_NUMBER par le vrai numéro WhatsApp Business (format international, sans +).
+ * wa.me ouvre directement l'application WhatsApp sur mobile
+ * (et WhatsApp Web/Desktop sur ordinateur).
  */
-export const WA_NUMBER = "22900000000";
+export const WA_NUMBER = "2290167266360"; // +229 01 67 26 63 60
+export const EMAIL = "eazysell.bj@gmail.com";
 
 const PREFIX = "Bonjour EazySell 👋";
 const ZONE = "à Cotonou";
