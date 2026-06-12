@@ -11,14 +11,53 @@ const bricolage = Bricolage_Grotesque({
   weight: ["400", "600", "700", "800"],
 });
 
+const SITE_URL = "https://eazysell-bj.online";
+const TITLE = "EazySell — L'IA qui fait grandir les entreprises béninoises";
+const DESCRIPTION =
+  "Google Business, sites & WhatsApp, chatbots IA, CRM et agents métiers. EazySell digitalise et automatise les PME de Cotonou et du Bénin — simplement. Diagnostic gratuit.";
+
 export const metadata: Metadata = {
-  title: "EazySell — L'IA qui fait grandir votre entreprise",
-  description: "Google Business, chatbots IA, CRM, agents métiers. On digitalise les PME béninoises — simplement.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s · EazySell",
+  },
+  description: DESCRIPTION,
+  applicationName: "EazySell",
+  keywords: [
+    "EazySell",
+    "IA pour entreprises Bénin",
+    "digitalisation PME Cotonou",
+    "Google Business Cotonou",
+    "chatbot WhatsApp Bénin",
+    "CRM PME africaines",
+    "agence digitale Cotonou",
+    "automatisation entreprise Bénin",
+    "site web Cotonou",
+    "intelligence artificielle PME",
+  ],
+  authors: [{ name: "François Mawutô Aboudou Zinsou", url: "https://aboudouzinsou.com" }],
+  creator: "François Mawutô Aboudou Zinsou",
+  publisher: "EazySell",
+  alternates: { canonical: "/" },
+  category: "technology",
   openGraph: {
-    title: "EazySell — L'IA qui fait grandir votre entreprise",
-    description: "Google Business, chatbots IA, CRM, agents métiers. On digitalise les PME béninoises — simplement.",
-    locale: "fr_FR",
     type: "website",
+    locale: "fr_FR",
+    url: SITE_URL,
+    siteName: "EazySell",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
